@@ -9,6 +9,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     web.vm.network "private_network", ip: "192.168.33.11"
   end
 
+  config.vm.define "marie" do |web|
+    web.vm.box = "annict-marie"
+    web.vm.network "private_network", ip: "192.168.33.20"
+  end
+
   # rootでSSH接続するためにVagrantが生成したauthorized_keysをrootでも使う
   config.vm.provision "shell", inline: "sudo cp -f /home/vagrant/.ssh/authorized_keys /root/.ssh"
 end
